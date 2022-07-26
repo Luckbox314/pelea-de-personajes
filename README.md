@@ -12,9 +12,10 @@ El heroe vencedor se queda para la siguiente ronda y el perdedor se elimina del 
 ```
 pip install -r requirements.txt
 ```
-2. Crear archvo `.env` con una llave de Sendgrid (API para mandar correos).
+1. Crear archvo `.env` con una llave de [Sendgrid](sendgrid.com) (API para mandar correos) y de [SuperHero API](https://www.superheroapi.com/index.html).
 ```.env
 SENDGRID_API_KEY='SG.XXXXXXXXXX.XXXXXXXXXX'
+HERO_API_KEY='XXXXXXXXXXXXXXXX'
 ```
 3. Correr programa.
 ```
