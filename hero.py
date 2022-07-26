@@ -19,7 +19,7 @@ class Hero:
             damage =  self.fast_attack(hero)
         else:
             damage =  self.mental_attack(hero)
-        print(f"\t\t{self.name} inflics {damage} to {hero.name}.")
+        print(f"\t\t{self.name} inflics {round(damage, 2)} to {hero.name}.")
         
     def mental_attack(self, hero):
         print(f"\t\t{self.name} uses mental attack against {hero.name}.")

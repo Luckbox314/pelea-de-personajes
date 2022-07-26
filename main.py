@@ -1,14 +1,13 @@
-from re import I
-import requests
 from heroApi import HeroAPI
 import random
 from miscellaneous import get_team_aligment
 import sys
+from mailer import send_email
 # hero api range from id 1 to 732
 
 # write prints to file
 orig_stdout = sys.stdout
-f = open('out.txt', 'w')
+f = open('out.txt', 'w+')
 sys.stdout = f
 
 # connection to hero api
@@ -79,8 +78,8 @@ while len(team1) > 0 and len(team2) > 0:
             hero2.attack(hero1)
             if hero1.hp > 0:
                 hero1.attack(hero2)
-        print(f"\t\t{hero1.name} HP: {hero1.hp}")
-        print(f"\t\t{hero2.name} HP: {hero2.hp}")
+        print(f"\t\t{hero1.name} HP: {round(hero1.hp, 2)}")
+        print(f"\t\t{hero2.name} HP: {round(hero2.hp, 2)}")
     if hero1.hp > 0:
         team2.pop(0)
         print(f"\t\t{hero1.name} (Team 1) wins the round!")
@@ -90,12 +89,21 @@ while len(team1) > 0 and len(team2) > 0:
     print(f"\t\tRemaining heroes in team 1: {team1}")
     print(f"\t\tRemaining heroes in team 2: {team2}")
     i += 1
+
+print()
+print("-----------------------------------------------------")
 if len(team1) > 0:
     print(f"Team 1 wins the fight!!")
     print(team1_backup)
 else:
     print(f"Team 2 wins the fight!!")
     print(team2_backup)
+print("-----------------------------------------------------")
+
 
 sys.stdout = orig_stdout
+f.seek(0)
+content = "".join(f.readlines())
+print(content)
+send_email(sys.argv[1], content)
 f.close()
