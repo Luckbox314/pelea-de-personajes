@@ -1,7 +1,25 @@
 # pelea-de-personajes
+
+## Contexto
+Implementación de una aplicación de consola que permite simular peleas entre heroes provistos por la [SuperHero API](https://www.superheroapi.com/index.html). Detalles sobre la simulación se encuentran en el archivo [Pelea_de_personajes.pdf](Pelea_de_personajes.pdf).
+
 ## Mecanismo de peleas
 Cada ronda de pelea ocurre entre el primer heroe de cada equipo.
 El heroe vencedor se queda para la siguiente ronda y el perdedor se elimina del equipo dando paso al siguiente en la lista.
+
+## Cómo correr la simulación
+1. Instalar dependencias.
+```
+pip install -r requirements.txt
+```
+2. Crear archvo `.env` con una llave de Sendgrid (API para mandar correos).
+```.env
+SENDGRID_API_KEY='SG.XXXXXXXXXX.XXXXXXXXXX'
+```
+3. Correr programa.
+```
+python main.py <youremail@email.com>
+```
 
 ## Supuestos
 1. En la primera mensión de AS (Actual Stamina) se establece que para cada stat de cada personaje se debe crear una variable AS.
